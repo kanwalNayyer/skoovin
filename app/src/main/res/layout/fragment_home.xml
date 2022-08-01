@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        >
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+                name="viewModel"
+                type="com.kotlin.mvvm.boilerplate.ui.main.home.HomeViewModel"/>
+
+        <variable
+                name="adapter"
+                type="com.kotlin.mvvm.boilerplate.ui.component.adapter.SongsAdapter"/>
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                app:title="@string/title_home"
+                app:titleTextColor="@android:color/white">
+        </android.support.v7.widget.Toolbar>
+
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_song"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                    android:adapter="@{adapter}"
+                    app:items="@{viewModel.items}"
+                    app:addVerticalItemDecoration="@{true}"
+                    app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+    </android.support.constraint.ConstraintLayout>
+
+</layout>
