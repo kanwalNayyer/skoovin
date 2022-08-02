@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".ui.main.comment.CommentActivity"
+                android:name=".ui.main.home.TrackDetailActivity"
                 android:screenOrientation="portrait"/>
     </application>
 

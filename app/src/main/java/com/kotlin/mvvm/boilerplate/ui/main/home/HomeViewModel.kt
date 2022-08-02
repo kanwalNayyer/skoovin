@@ -25,6 +25,7 @@ class HomeViewModel @Inject constructor(
     private val songRepository: SongsRepository
 ) : BaseViewModel() {
 
+    var currentSong = SongsEntity(0)
     val isRefreshing = ObservableBoolean(false)
     val items: ObservableList<SongsEntity> = ObservableArrayList()
     val onSongOpenEvent = SingleLiveEvent<SongsEntity>()
@@ -35,6 +36,18 @@ class HomeViewModel @Inject constructor(
     fun setActivity(activity: Activity)
     {
         this.activity = activity
+    }
+
+    @JvmName("setCurrentSong1")
+    fun setCurrentSong(song:SongsEntity)
+    {
+        currentSong = song
+    }
+
+    @JvmName("getCurrentSong1")
+    fun getCurrentSong():SongsEntity
+    {
+        return currentSong
     }
 
     override fun start() {

@@ -90,6 +90,9 @@ class SongsRepository @Inject constructor(
     fun getSongsList(): Flowable<List<SongsEntity>>
     {
         val song = Gson().fromJson(loadJSONFromAsset(), SongsJson::class.java)
+        song.data?.forEach {
+            it.rating = "0"
+        }
        return Flowable.just(song.data)
     }
 }

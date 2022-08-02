@@ -59,9 +59,10 @@ class HomeFragment @Inject constructor() : BaseFragment() {
     private fun handleUIEvent() {
         homeViewModel.onSongOpenEvent.observe(this, Observer { song ->
             song?.let {
-//                val intent = Intent(context, CommentActivity::class.java)
-//                intent.putExtra(NEWS_DATA, Gson().toJson(it))
-//                startActivity(intent)
+                homeViewModel.setCurrentSong(song)
+                val intent = Intent(context, TrackDetailActivity::class.java)
+                intent.putExtra("Song", Gson().toJson(song))
+                startActivity(intent)
             }
         })
     }
